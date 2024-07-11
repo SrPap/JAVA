@@ -27,16 +27,26 @@ public static void main(String[] args) {
 
             // }
 
-            if (Numberfind == array1[1]) {
+            if (Numberfind == array1[0]) {
                 findNum = true;
-                if (Numberfind == array1[2]) {
+                if (Numberfind == array1[1]) {
                     findNum = true;
                     
+                }else {
+                    if (Numberfind == array1[2]) {
+                        findNum = true;
+                        
+                    }
                 }
             } else {
-                if (Numberfind == array1[2]) {
+                if (Numberfind == array1[1]) {
                     findNum = true;
                     
+                }else {
+                    if (Numberfind == array1[2]) {
+                        findNum = true;
+                        
+                    }
                 }
             }
 
