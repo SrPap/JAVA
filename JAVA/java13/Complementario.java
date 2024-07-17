@@ -2,54 +2,35 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class Complementario {
-public static void main(String[] args) {
-        try (Scanner Data = new Scanner(System.in)) {
-            try {
+    public static void main(String[] args) {
+        try (Scanner data = new Scanner(System.in)) {
             System.out.println("Rellenando un arreglo de manera personalizada");
 
-            System.out.print("Ingrese el tamaño deseado del array = ");
-            int Number1 = Data.nextInt();
-            int[] array1 = new int[Number1];
-            int[] array2 = new int[Number1];
+            System.out.print("Ingrese el tamaño deseado del array: ");
+            int arraySize = data.nextInt();
+            int[] array = new int[arraySize];
+            
             int indexStart = 0;
-            int indexEnd;
+            int indexEnd = 0;
 
-                do { 
-                System.out.print("Ingrese el número para rellenar el array = ");
-                int Number2 = Data.nextInt();
-                Arrays.fill(array2, Number2);
-                
+            while (indexEnd < arraySize) {
+                System.out.print("Ingrese el número para rellenar el array: ");
+                int number = data.nextInt();
 
-                System.out.print("Ingrese el indice final = ");
-                indexEnd = Data.nextInt();
+                System.out.print("Ingrese el índice final (debe ser mayor que " + indexStart + " y menor que " + arraySize + "): ");
+                indexEnd = data.nextInt();
 
-                if (indexStart >= indexEnd) {
-                System.out.println("El indice inicial debe ser mayor al indice final");
-                
-                } else if (indexStart <= array1.length & indexEnd <= array1.length & indexStart > -1){
-                    array1= Arrays.copyOfRange(array2, indexStart, array2.length);
-                    System.out.println("El array ingresado es " + Arrays.toString(array1));
-                    array1= Arrays.copyOfRange(array2, 0, Number1);
-
-
-                    indexStart = indexEnd;
+                if (indexEnd <= indexStart || indexEnd > arraySize) {
+                    System.out.println("Índice no válido. Debe ser mayor que " + indexStart + " y menor que " + arraySize);
                 } else {
-                    System.out.println("Los indices tienen que estar dentro del rango del array");
-                    System.out.print(indexStart + " " + indexEnd);
-                    System.out.print(" " +array1.length + " " + array2.length);
-
-
+                    Arrays.fill(array, indexStart, indexEnd, number);
+                    indexStart = indexEnd;
                 }
-                System.out.print(indexStart + " " + indexEnd);
-
-                } while (indexStart != array1.length);
-
-                
-            } catch (Exception e) {
-                System.out.println("Error: Se a ingresado un dato no valido.");
             }
-        }}}
 
-        
-        
-        
+            System.out.println("El array ingresado es: " + Arrays.toString(array));
+        } catch (Exception e) {
+            System.out.println("Error: Se ha ingresado un dato no válido.");
+        }
+    }
+}
